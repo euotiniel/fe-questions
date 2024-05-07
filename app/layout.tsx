@@ -3,6 +3,7 @@ import { WEBSITE_HOST_URL } from '@/lib/constants'
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import Container from "@/components/container"
 
 const meta = {
   title: '120 front-end questions',
@@ -49,7 +50,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={GeistSans.className}>{children}</body>
+      <body className={GeistSans.className}>
+      <Container>
+        {children}
+      </Container>
+      </body>
     </html>
   );
 }
