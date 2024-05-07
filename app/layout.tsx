@@ -1,21 +1,20 @@
-
-import { WEBSITE_HOST_URL } from '@/lib/constants'
+import { WEBSITE_HOST_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
-import Container from "@/components/container"
+import Container from "@/components/container";
+import { ViewTransitions } from "next-view-transitions";
 
 const meta = {
-  title: '120 front-end questions',
-  description:
-    '120 front-end questions posed by Ruben Paschoarelli',
+  title: "120 front-end questions",
+  description: "120 front-end questions posed by Ruben Paschoarelli",
   image: `${WEBSITE_HOST_URL}/og-preview.jpg`,
-}
+};
 
 export const metadata: Metadata = {
   title: {
     default: meta.title,
-    template: '%s | 120 front-end questions',
+    template: "%s | 120 front-end questions",
   },
   description: meta.description,
   openGraph: {
@@ -23,8 +22,8 @@ export const metadata: Metadata = {
     description: meta.description,
     url: WEBSITE_HOST_URL,
     siteName: meta.title,
-    locale: 'en-US',
-    type: 'website',
+    locale: "en-US",
+    type: "website",
     images: [
       {
         url: meta.image,
@@ -35,13 +34,12 @@ export const metadata: Metadata = {
     title: meta.title,
     description: meta.description,
     images: meta.image,
-    card: 'summary_large_image',
+    card: "summary_large_image",
   },
   alternates: {
     canonical: WEBSITE_HOST_URL,
   },
-}
-
+};
 
 export default function RootLayout({
   children,
@@ -49,12 +47,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={GeistSans.className}>
-      <Container>
-        {children}
-      </Container>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={GeistSans.className}>
+          <Container>{children}</Container>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

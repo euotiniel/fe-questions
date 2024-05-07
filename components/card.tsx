@@ -1,39 +1,88 @@
 "use client";
 
-import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
+import { useState } from "react";
 
-export function CardRevealedPointer() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+import { AnimatePresence, motion } from "framer-motion";
+
+import { cn } from "@/lib/utils";
+
+import { Link } from 'next-view-transitions'
+
+type CardHoverEffectProps = {
+  containerClassName?: string;
+  itemClassName?: string;
+  hoveredItemClassName?: string;
+};
+
+export default function CardHoverEffect({
+  containerClassName,
+  itemClassName,
+  hoveredItemClassName,
+}: CardHoverEffectProps) {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  const items = [
+    {
+      title: "Junior",
+      description:
+        "Find about 30 beginner-level front-end questions. From HTML questions to more complex topics.",
+      href: "/junior",
+    },
+    {
+      title: "Pleno",
+      description:
+        "Want something a little more advanced? Explore the trail to the fullest and find out if it's up to the task.",
+      href: "/pleno",
+    },
+    {
+      title: "Senior",
+      description:
+        "Welcome to the senior level. Test your knowledge, maybe discover new things about front-end.",
+      href: "/senior",
+    },
+  ];
 
   return (
-    <div
-      onMouseMove={(e) => {
-        const { left, top } = e.currentTarget.getBoundingClientRect();
+    <div className={cn("grid md:grid-cols-3", containerClassName)}>
+      {items.map((item, idx) => {
+        const { title, description, href } = item;
 
-        mouseX.set(e.clientX - left);
-        mouseY.set(e.clientY - top);
-      }}
-      className="group relative max-w-[350px] w-full overflow-hidden rounded-xl bg-neutral-950"
-    >
-      <div className="absolute right-5 top-0 h-px w-80 bg-gradient-to-l from-transparent via-white/30 via-10% to-transparent" />
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
-						radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(38, 38, 38, 0.4), transparent 80%)
-					`,
-        }}
-      />
-      <div className="relative flex flex-col gap-3 rounded-xl border border-white/10 px-4 py-5">
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-neutral-200">Luxe</h3>
-          <p className="text-sm leading-[1.5] text-neutral-400">
-            Explore the new website that simplifies the creation of
-            sophisticated dark mode components.
-          </p>
-        </div>
-      </div>
+        return (
+          <Link
+            key={idx}
+            href={href}
+            rel="noopener noreferrer"
+            className={cn("relative flex flex-col gap-3 p-4", itemClassName)}
+            onMouseEnter={() => setHoveredIdx(idx)}
+            onMouseLeave={() => setHoveredIdx(null)}
+          >
+            <AnimatePresence>
+              {hoveredIdx === idx && (
+                <motion.span
+                  className={cn(
+                    "absolute inset-0 z-0 block h-full w-full rounded-xl bg-neutral-900",
+                    hoveredItemClassName
+                  )}
+                  layoutId="cardHoverEffect"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.15 },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: { duration: 0.15, delay: 0.2 },
+                  }}
+                />
+              )}
+            </AnimatePresence>
+            <div className="z-[1] space-y-3">
+              <h1 className="font-medium text-white">{title}</h1>
+              <p className="text-neutral-400">{description}</p>
+            </div>
+          </Link>
+        );
+      })}
     </div>
   );
 }
