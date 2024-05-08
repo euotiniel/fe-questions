@@ -98,7 +98,7 @@ const juniorQuestions = [
     },
     {
       id: 17,
-      question: "17. Name 3 concepts of Object-Oriented Programming applied to JavaScript.",
+      question: "Name 3 concepts of Object-Oriented Programming applied to JavaScript.",
       answer:
         "Some concepts of Object-Oriented Programming (OOP) applied to JavaScript include encapsulation, inheritance, and polymorphism.",
     },
@@ -134,19 +134,19 @@ const juniorQuestions = [
     },
     {
       id: 23,
-      question: "23. What is and how to use the Block Element Modifier (BEM) convention?",
+      question: "What is and how to use the Block Element Modifier (BEM) convention?",
       answer:
         'The Block Element Modifier (BEM) convention is a CSS class naming methodology that helps make code more organized and easier to maintain. Each class is divided into three parts: the block (an independent component), the element (a part of the component), and the modifier (a variation of the element). For example, a button could be represented as ".button", a shopping cart icon inside the button could be represented as ".button__cart", and an active button could be represented as ".button--active".',
     },
     {
       id: 24,
-      question: "24. JavaScript: Explain how you can use JavaScript functions like forEach, Map or Reduce.",
+      question: "JavaScript: Explain how you can use JavaScript functions like forEach, Map or Reduce.",
       answer:
         "JavaScript functions like forEach, Map, and Reduce are methods for iterating over arrays. The forEach function executes a function for each item in the array, without returning anything. The Map function executes a function for each item in the array and returns a new array with the results. The Reduce function executes a function for each item in the array and returns an accumulated value.",
     },
     {
       id: 25,
-      question: "25. React: What is and how can you take advantage of PureComponent?",
+      question: "React: What is and how can you take advantage of PureComponent?",
       answer:
         "PureComponent is a component in React that provides performance optimizations by default. It implements the shouldComponentUpdate function to compare the component's props and state with the previous version, and only re-renders if there are differences. This avoids unnecessary renders and can improve the application's performance.",
     },
