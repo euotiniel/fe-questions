@@ -8,7 +8,8 @@ export default function footer() {
           2024 . Made by{" "}
           <Link
             href="https://twitter.com/euotiniel"
-            className="border-b "
+            className="border-b"
+            target="_blank"
           >
             <span className="p-1">euotiniel</span>
           </Link>
@@ -16,7 +17,7 @@ export default function footer() {
       </div>
       <div className="mt-9 sm:mb-3">
         <div className="text-sm">
-          <Link href="https://github.com/euotiniel/fe-questions/issues">
+          <Link href="https://github.com/euotiniel/fe-questions/issues" target="_blank">
             <span className="p-1">send your feedback</span>
           </Link>
         </div>
