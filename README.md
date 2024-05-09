@@ -4,11 +4,20 @@ This website is designed to provide quick and straightforward answers to questio
 
 The questions are taken from <a href="https://github.com/rubenmarcus/" target="blank">Ruben Paschoarelli's</a> github. These Questions are intended to be a basis for interviews and candidates to level up in job interviews.
 
+> Questions are not necessarily the decisive factor of seniority, factors such as project experience, leadership, documentation and concepts can sometimes count for much more than knowing how to memorize these answers.
+
 #### The levels: 
 
-- Junior;
-- Intermediate;
-- Senior.
+- junior;
+- intermediate;
+- senior.
+
+#### Built with:
+
+- <a href="https://nextjs.org/" target="blank">nextjs</a>;
+- <a href="https://luxe.guhrodrigues.com/" target="blank">luxe</a>;
+- <a href="https://github.com/shuding/next-view-transitions" target="blank">next-view-transitions</a>;
+- <a href="https://ui.shadcn.com/" target="blank">ui.shadcn</a>
 
 ### Install
 
