@@ -1,1 +1,45 @@
-let's go 
+## 120 front-end questions
+
+This website is designed to provide quick and straightforward answers to questions you may encounter in your day-to-day life as a front-end developer (and beyond). 
+
+The questions are taken from <a href="https://github.com/rubenmarcus/" target="blank">Ruben Paschoarelli's</a> github. These Questions are intended to be a basis for interviews and candidates to level up in job interviews.
+
+#### The levels: 
+
+- Junior;
+- Intermediate;
+- Senior.
+
+### Install
+
+To run the project on your machine, fork it and clone.
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+And run:
+
+```bash
+pnpm dev
+```
+
+### Contributions
+
+You can contribute in a variety of ways, feel free to suggest and correct what is needed.
+
+Currently we need to focus on:
+
+- [] Answer intermediate and senior level questions
+
+**<a href="https://github.com/rubenmarcus/120-perguntas-frontend" target="blank">Here you will have access to these questions.</a>** 👈🏾
+
+Your pull request is welcome, we look forward to it.
+
+### License
+
+The project is under the MIT license!
+
+let's go 🏎
