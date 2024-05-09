@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
 import { Link } from "next-view-transitions";
 
 export default function header() {
+  
   const items = [
     {
       id: 1,
