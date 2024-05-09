@@ -9,7 +9,7 @@ export interface InputProps
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
-      <form className="flex flex-row items-center gap-1 h-9 w-full rounded-xl border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none  disabled:cursor-not-allowed disabled:opacity-50">
+      <div className="flex flex-row items-center gap-1 h-9 w-full rounded-xl border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none  disabled:cursor-not-allowed disabled:opacity-50">
         <input
         type={type}
         className={cn(
@@ -20,7 +20,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {...props}
       />
       <Search size={18} className="text-neutral-500" />
-      </form>
+      </div>
     )
   }
 )

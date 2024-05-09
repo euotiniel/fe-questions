@@ -29,10 +29,10 @@ export default function CardHoverEffect({
       href: "/junior",
     },
     {
-      title: "Pleno",
+      title: "Intermediate",
       description:
         "Want something a little more advanced? Explore the trail to the fullest and find out if it's up to the task.",
-      href: "/pleno",
+      href: "/intermediate",
     },
     {
       title: "Senior",

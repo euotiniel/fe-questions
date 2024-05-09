@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+
+import Description from "@/components/description";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/search";
 import {
@@ -5,42 +10,78 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import juniorQuestions from "./questions"
+} from "@/components/faq";
+
+import juniorQuestions from "./questions";
 
 export default function Home() {
+  const [search, setSearch] = useState<string>("");
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setSearch(event.target.value);
+  const filteredQuestions = juniorQuestions.filter((item) =>
+    item.question.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const tags = [
+    {
+      title: "junior",
+    },
+    {
+      title: "web",
+    },
+    {
+      title: "architecture",
+    },
+    {
+      title: "security",
+    },
+  ];
+
   return (
     <div className="my-24">
-      <div>
-      <h1 className="text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 text-transparent bg-clip-text">
-        Junior
-      </h1>
-      <p className="my-12 text-neutral-400 leading-7 [&:not(:first-child)]:mt-6">
-      Find about 30 beginner-level front-end questions. From HTML questions to more complex topics.
-      </p>
-      </div>
-      <div className="flex flex-row items-center justify-between">
-          <ul className="flex flex-row items-center gap-1">
-            <li><Badge variant="outline">junior</Badge></li>
-            <li><Badge variant="outline">web</Badge></li>
-            <li><Badge variant="outline">architecture</Badge></li>
-            <li><Badge variant="outline">security</Badge></li>
-          </ul>
+      <Description
+        title="Junior"
+        description="Find about 30 beginner-level front-end questions. From HTML questions
+          to more complex topics."
+      />
+      <div className="flex flex-col md:items-center gap-5 md:flex-row md:justify-between">
+        <ul className="flex flex-row items-center gap-1">
+          {tags.map((tag) => (
+            <li key={tag.title}>
+              <Badge variant="outline">{tag.title}</Badge>
+            </li>
+          ))}
+        </ul>
         <div>
-          <Input type="text" placeholder="Search for..." />
+          <Input
+            type="text"
+            placeholder="Search for..."
+            value={search}
+            onChange={handleSearchChange}
+          />
         </div>
       </div>
       <div className="mt-12">
-      {juniorQuestions.map((data) => (
-        <Accordion type="single" collapsible className="w-full" key={data.id}>
-        <AccordionItem value="item-1">
-          <AccordionTrigger>{data.question}</AccordionTrigger>
-          <AccordionContent>
-            {data.answer}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-      ))}
+        {filteredQuestions.length > 0 ? (
+          filteredQuestions.map((data) => (
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full"
+              key={data.id}
+            >
+              <AccordionItem value="item">
+                <AccordionTrigger>{data.question}</AccordionTrigger>
+                <AccordionContent>{data.answer}</AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          ))
+        ) : (
+          <p className="text-neutral-400">
+            No results found for{" "}
+            <span className="font-semibold">&apos;{search}&apos;</span>.
+          </p>
+        )}
       </div>
     </div>
   );

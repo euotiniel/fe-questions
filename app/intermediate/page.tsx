@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <div className="my-24">
       <Description
-        title="Senior"
-        description="Welcome to the senior level. Test your knowledge, maybe discover new things about front-end."
+        title="Intermediate"
+        description="Want something a little more advanced? Explore the trail to the fullest and find out if it's up to the task."
       />
     </div>
   );
